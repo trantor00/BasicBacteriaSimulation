@@ -63,7 +63,7 @@ struct newBacteria {
 	std::vector<double> phobes;
 }typedef newBacteria;
 
-
+//non-class prototypes
 std::string getTrueCodon(std::string incomingCodon, int error);
 
 class Bacteria{
@@ -85,12 +85,12 @@ public:
 public:
 	void calculateSurvivalPoint();
 	void setSurvivalPoint(int point);
-	void duplicatingCODE(); //setting
+	void duplicatingCODE(std::string incomingCodon); //setting
 	double getSurvivalPoint();
 	double getGrowthRATE();
 	double getLifeTIME();
-
 	std::string getGeneticCode();
+	const Bacteria &operator=(const Bacteria &newBacteria); // = operator overloading
 
 
 };

@@ -60,7 +60,7 @@ int Ecosystem::calculateLifesupport() {
  }
 
 
-void Ecosystem::environment() {
+void Ecosystem::createEnvironment() {
 	overallLifeSupport = createEcosystem() + calculateLifesupport();
 }
 

@@ -21,16 +21,6 @@ enum environments {  //0-5
 
 
 // Source: https://examples.yourdictionary.com/examples-of-bacteria.html
-/*struct bacterias {
-	enum Coccus { Staphaureus, Sepidermidis};
-	enum Bacillus { Cdiptheriae, Bacillusanthracis};
-	enum Spirillum {   };
-	enum Rickettsia {   };
-	enum Mycoplasma {   };
-
-}typedef bacterias;*/
-
-
 
 class Ecosystem
 {
@@ -51,7 +41,7 @@ public:
 public:
 	int createEcosystem();
 	int calculateLifesupport();
-	void environment();
+	void createEnvironment();
 	int currentBacteriaAmount = 0;
 	int getoverallLifeSupport();
 };

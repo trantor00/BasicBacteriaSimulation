@@ -44,9 +44,8 @@ double Bacteria::getLifeTIME() {
 	return lifeTIME;
 }
 
-void Bacteria::duplicatingCODE() {
-
-
+void Bacteria::duplicatingCODE(std::string incomingCodon) {
+	this->GENETICCODE = incomingCodon;
 }
 
 
@@ -98,6 +97,19 @@ void injectedBacteria::setBacterias() {  // so many research should be done befo
 	//Mycoplasma
 	
 }
+
+const Bacteria& Bacteria::operator=(const Bacteria& newBacteria) {
+	this->bacteriaType = newBacteria.bacteriaType;
+	this->GENETICCODE = newBacteria.GENETICCODE;
+	this->mutuality = newBacteria.mutuality;
+	this->growthRATE = newBacteria.growthRATE;
+	this->lifeTIME = newBacteria.lifeTIME;
+	this->philes = newBacteria.philes; // I may need an operator= overloading for vectors.
+	this->phobes = newBacteria.phobes;
+	this->overallSurvivalPoint = newBacteria.overallSurvivalPoint;
+	return *this;	
+}
+
 newBacteria* injectedBacteria::returnBacteria() {
 	if (bacteria == "Coccus") return Coccus;
 	else if (bacteria == "Bacillus") return Bacillus;
@@ -108,33 +120,38 @@ newBacteria* injectedBacteria::returnBacteria() {
 
 std::string getTrueCodon(std::string incomingCodon, int error) {
 	std::string trueCodon;
+	error *= 100;
 	switch (error) {
 	case 1:
 		trueCodon = UU2;
 		break;
 	case 2:
-
+		trueCodon = UC1;
 		break;
 	case 3:
-
+		trueCodon = UA2;
 		break;
 	case 4:
-
+		trueCodon = UG1;
 		break;
 	case 5:
-
+		trueCodon = CU2;
 		break;
 	case 6:
-
+		trueCodon = CC1;
 		break;
 	case 7:
-
+		trueCodon = CA2;
 		break;
 	case 8:
-
+		trueCodon = CG1;
 		break;
 	case 9:
+		trueCodon = AU2;
+		break;
 
+	default:
+		trueCodon = incomingCodon;
 		break;
 		/*#define UU1 "UUU"
 #define UU2 "UUC"
