@@ -21,6 +21,7 @@ public:
 	void setParameters();	
 	void fabrication();
 	void startSimulation();
+	std::vector<Bacteria> getBacterias();
 
 };
 

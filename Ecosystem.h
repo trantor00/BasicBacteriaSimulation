@@ -44,5 +44,6 @@ public:
 	void createEnvironment();
 	int currentBacteriaAmount = 0;
 	int getoverallLifeSupport();
+	const Ecosystem& operator=(const Ecosystem& newEcosystem); // = operator overloading
 };
 

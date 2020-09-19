@@ -7,8 +7,8 @@ Ecosystem::Ecosystem(std::string ecosystemName, int environmentType, double degr
 	this->area = area;
 	this->maxAmountofBacterias = maxAmountofBacterias;
 	overallLifeSupport = 0;
-
 }
+Ecosystem::Ecosystem() {}
 Ecosystem::~Ecosystem(){}
 
 int Ecosystem::createEcosystem() {
@@ -67,4 +67,12 @@ void Ecosystem::createEnvironment() {
 int Ecosystem::getoverallLifeSupport() {
 	return overallLifeSupport;
 }
-
+const Ecosystem& Ecosystem::operator=(const Ecosystem& newEcosystem) {
+	this->ecosystemName = newEcosystem.ecosystemName;
+	this->degree = newEcosystem.degree;
+	this->area = newEcosystem.area;
+	this->maxAmountofBacterias = newEcosystem.maxAmountofBacterias;
+	this->overallLifeSupport = newEcosystem.overallLifeSupport;
+	this->environmentType = newEcosystem.environmentType;
+	return *this;
+}

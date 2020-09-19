@@ -63,8 +63,7 @@ struct newBacteria {
 	std::vector<double> phobes;
 }typedef newBacteria;
 
-//non-class prototypes
-std::string getTrueCodon(std::string incomingCodon, int error);
+
 
 class Bacteria{
 private:
@@ -79,7 +78,6 @@ private:
 
 public:
 	Bacteria(newBacteria* newBacteria);
-	Bacteria();
 	~Bacteria();
 
 public:
@@ -90,7 +88,9 @@ public:
 	double getGrowthRATE();
 	double getLifeTIME();
 	std::string getGeneticCode();
+	std::string getbacteriaType();
 	const Bacteria &operator=(const Bacteria &newBacteria); // = operator overloading
+	std::string getTrueCodon(std::string incomingCodon, int error);
 
 
 };
@@ -105,7 +105,6 @@ private:
 	newBacteria* Mycoplasma = nullptr;
 public:
 	injectedBacteria(std::string newBacteria);
-	~injectedBacteria();
 public:
 	void setBacterias();
 	newBacteria* returnBacteria();

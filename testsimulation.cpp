@@ -1,7 +1,7 @@
 #include "BeginSimulation.h"
 #include <iostream>
 #include <stdio.h>
-#include <memory>
+
 
 using namespace std;
 
@@ -10,17 +10,18 @@ int main() {
 
 	//Ecosystem
 	string ecosystemName = "test1";
-	unique_ptr<Ecosystem> newEcosystem(new Ecosystem(ecosystemName, 0, 20, 100, 50));
+	Ecosystem newEcosystem(ecosystemName, 0, 20, 100, 50);
 	//Ecosystem *newEcosystem = new Ecosystem("test1", 0, 20, 100, 50);
-	newEcosystem->createEnvironment();
+	newEcosystem.createEnvironment();
 
 
 	//Bacterias
-	unique_ptr<injectedBacteria> simpleBacteria(new injectedBacteria(("Coccus")));	
-	simpleBacteria->setBacterias();
-	unique_ptr<Bacteria> tempBacteria(new Bacteria(simpleBacteria->returnBacteria()));
-	tempBacteria->calculateSurvivalPoint();
-	tempBacteria->setSurvivalPoint(newEcosystem->getoverallLifeSupport());
+	injectedBacteria simpleBacteria("Coccus");
+	simpleBacteria.setBacterias();
+    Bacteria tempBacteria(simpleBacteria.returnBacteria());
+	tempBacteria.calculateSurvivalPoint();
+	tempBacteria.setSurvivalPoint(newEcosystem.getoverallLifeSupport());
+	
 
 	//Simulation
 	bool naturalSelection = true;
@@ -28,14 +29,23 @@ int main() {
 	bool antibiotics = true;
 	int givenAlimentAmount = 1000;
 	//BeginSimulation* simulation1 = new BeginSimulation(*newEcosystem, naturalSelection, selectiveBreeding, antibiotics, givenAlimentAmount);
-	unique_ptr<BeginSimulation> simulation1(new BeginSimulation(*newEcosystem, naturalSelection, selectiveBreeding, antibiotics, givenAlimentAmount));
-	simulation1->injectNewBacteria(*tempBacteria);
-	simulation1->setSurvivability();
-	simulation1->fabrication();
+	BeginSimulation simulation1(newEcosystem, naturalSelection, selectiveBreeding, antibiotics, givenAlimentAmount);
+	for(int x=0;x<5;x++)
+	simulation1.injectNewBacteria(tempBacteria);
+	simulation1.setSurvivability(); 
+	simulation1.fabrication();
+	for(int i=0;i<simulation1.getBacterias().size();i++)
+	cout << "Bacteria " << simulation1.getBacterias().at(i).getbacteriaType() << " - " << i << " 'sGenetic Code : " << simulation1.getBacterias().at(i).getGeneticCode() << endl;
+	
+	int total = 0;
+	for (int i = 0; i < 10; i++) {
+		if (simulation1.getBacterias().at(i).getGeneticCode().compare((string)CODECoccus) != 0) {
+			cout << "Genetical variation detected! at -> " << i << endl;
+			total++;
+		}
+	}
 
-
-
-	cout << "Simulation finished" << endl;
+	cout << "Variation rate is " <<(double)total/10 << "\n\nSimulation finished." << endl;
 
 	
 

@@ -48,15 +48,25 @@ void Bacteria::duplicatingCODE(std::string incomingCodon) {
 	this->GENETICCODE = incomingCodon;
 }
 
+std::string Bacteria::getbacteriaType() {
+	return bacteriaType;
+}
 
 
 injectedBacteria::injectedBacteria(std::string newBacteria) {
 	this->bacteria = newBacteria;
-	setBacterias();
+}
+newBacteria* injectedBacteria::returnBacteria() {
+	if (bacteria == "Coccus") return Coccus;
+	else if (bacteria == "Bacillus") return Bacillus;
+
+	return nullptr;
+
 }
 void injectedBacteria::setBacterias() {  // so many research should be done before this section
 	// I know there are bunch of sub bacterias of these 5 bacteria kind but to keep simulation basic I only defined 5 of them as main bacterias. 
 	//Coccus
+	Coccus = new newBacteria;
 	Coccus->bacteriaType = "Coccus";
 	Coccus->GENETICCODE=(std::string)CODECoccus;
 	Coccus->growthRATE = 10;
@@ -78,17 +88,19 @@ void injectedBacteria::setBacterias() {  // so many research should be done befo
 	Coccus->phobes = Coccusphobes;
 
 	//Bacillus
-	Coccus->bacteriaType = "Bacillus";
-	Coccus->GENETICCODE = (std::string)CODEBacillus;
-	Coccus->growthRATE = 15;
-	Coccus->lifeTIME = 7;
-	Coccus->mutuality = true;
+	Bacillus = new newBacteria;
+	Bacillus->bacteriaType = "Bacillus";
+	Bacillus->GENETICCODE = (std::string)CODEBacillus;
+	Bacillus->growthRATE = 15;
+	Bacillus->lifeTIME = 7;
+	Bacillus->mutuality = true;
 	std::vector<double> Bacillusphiles;
 	std::vector<double> Bacillusphobes;
 	Bacillusphiles.push_back(2); Bacillusphiles.push_back(2); Bacillusphiles.push_back(3);
 	Bacillusphobes.push_back(1); Bacillusphobes.push_back(3); Bacillusphobes.push_back(1);
-	Coccus->philes = Bacillusphiles;
-	Coccus->phobes = Bacillusphobes;
+	Bacillus->philes = Bacillusphiles;
+	Bacillus->phobes = Bacillusphobes;
+	
 
 	//Spirillum
 
@@ -110,17 +122,12 @@ const Bacteria& Bacteria::operator=(const Bacteria& newBacteria) {
 	return *this;	
 }
 
-newBacteria* injectedBacteria::returnBacteria() {
-	if (bacteria == "Coccus") return Coccus;
-	else if (bacteria == "Bacillus") return Bacillus;
 
-	return nullptr;
 
-}
-
-std::string getTrueCodon(std::string incomingCodon, int error) {
+std::string Bacteria::getTrueCodon(std::string incomingCodon, int error) {
 	std::string trueCodon;
-	error *= 100;
+	if (incomingCodon == START) return START;
+	if (incomingCodon == STOP) return STOP;
 	switch (error) {
 	case 1:
 		trueCodon = UU2;
@@ -149,48 +156,10 @@ std::string getTrueCodon(std::string incomingCodon, int error) {
 	case 9:
 		trueCodon = AU2;
 		break;
-
 	default:
 		trueCodon = incomingCodon;
 		break;
-		/*#define UU1 "UUU"
-#define UU2 "UUC"
-#define UC1 "CUU"
-#define UC2 "CUC"
-#define UA1 "AUU"
-#define UA2 "AUC"
-#define UG1 "GUU"
-#define UG2 "GUC"
-#define CU1 "UCU"
-#define CU2 "UCC"
-#define CC1 "CCU"
-#define CC2 "CCC"
-#define CA1 "ACU"
-#define CA2 "ACC"
-#define CG1 "GCU"
-#define CG2 "GCC"
-#define AU1 "UAU"
-#define AU2 "UAC"
-#define AC1 "CAU"
-#define AC2 "CAC"
-#define AA1 "AAU"
-#define AA2 "AAC"
-#define AG1 "GAU"
-#define AG2 "GAC"
-#define GU1 "UGU"
-#define GU2 "UGC"
-#define GC1 "CGU"
-#define GC2 "CGG"
-#define GA1 "AGU"
-#define GA2 "AGC" 
-#define GG1 "GGU"
-#define GG2 "GGC"*/
-
-
-
-
-
-		return trueCodon;
 	}
+	return trueCodon;
 
 }
