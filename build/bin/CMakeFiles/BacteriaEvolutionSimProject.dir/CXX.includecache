@@ -1,0 +1,38 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/berk/Downloads/BasicBacteriaSimulation-master/source/Bacteria.h
+iostream
+-
+vector
+-
+
+/home/berk/Downloads/BasicBacteriaSimulation-master/source/BeginSimulation.cpp
+BeginSimulation.h
+/home/berk/Downloads/BasicBacteriaSimulation-master/source/BeginSimulation.h
+math.h
+-
+
+/home/berk/Downloads/BasicBacteriaSimulation-master/source/BeginSimulation.h
+Ecosystem.h
+/home/berk/Downloads/BasicBacteriaSimulation-master/source/Ecosystem.h
+
+/home/berk/Downloads/BasicBacteriaSimulation-master/source/Ecosystem.h
+iostream
+-
+stdlib.h
+-
+time.h
+-
+string
+-
+vector
+-
+Bacteria.h
+/home/berk/Downloads/BasicBacteriaSimulation-master/source/Bacteria.h
+
