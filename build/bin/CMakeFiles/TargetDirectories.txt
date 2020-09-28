@@ -1,3 +1,0 @@
-/home/berk/Downloads/BasicBacteriaSimulation-master/build/bin/CMakeFiles/rebuild_cache.dir
-/home/berk/Downloads/BasicBacteriaSimulation-master/build/bin/CMakeFiles/edit_cache.dir
-/home/berk/Downloads/BasicBacteriaSimulation-master/build/bin/CMakeFiles/BacteriaEvolutionSimProject.dir
