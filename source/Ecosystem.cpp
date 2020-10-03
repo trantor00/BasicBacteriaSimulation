@@ -61,7 +61,7 @@ int Ecosystem::calculateLifesupport() {
 
 void Ecosystem::createEnvironment() {
 	overallLifeSupport = createEcosystem() + calculateLifesupport();
-	std::cout << "Ecosystem life support is" << overallLifeSupport << std::endl;
+	std::cout << "Ecosystem life support is " << overallLifeSupport << std::endl;
 }
 
 int Ecosystem::getoverallLifeSupport() {
