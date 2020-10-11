@@ -25,11 +25,11 @@ test class and GUI >> in the test class all the variables and parameters will be
 
 It'd be more complicated than written here...
 
-###Screenshots >>
+### Screenshots >>
 
-####Test1
+#### Test1
 ![Enc1](https://github.com/trantor00/BasicBacteriaSimulation/blob/master/screenshots/test1.png)
-####Test2
+#### Test2
 ![Enc1](https://github.com/trantor00/BasicBacteriaSimulation/blob/master/screenshots/test2.png)
 
 
