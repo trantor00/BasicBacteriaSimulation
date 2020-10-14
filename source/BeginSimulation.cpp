@@ -31,12 +31,18 @@ void BeginSimulation::fabrication() {
 	srand((unsigned)time(0));
 	int numberofDivisionedBacterias = 0;
 	std::vector<Bacteria> tempBacterias;
-	double survivalpoints[5];
+	double survivalpoints[5];  // since we have 5 bacteria species..
 	std::string xample1 = bacterias.at(0).getbacteriaType();
 	std::string xample2 = bacterias.at(1).getbacteriaType();
+	std::string xample3 = bacterias.at(2).getbacteriaType();
+	std::string xample4 = bacterias.at(3).getbacteriaType();
+	std::string xample5 = bacterias.at(4).getbacteriaType();
 		if(xample1.compare(xample2)!=0){
                survivalpoints[0]= bacterias.at(0).getSurvivalPoint();
 			   survivalpoints[1]= bacterias.at(1).getSurvivalPoint();
+			   survivalpoints[2]= bacterias.at(2).getSurvivalPoint();
+			   survivalpoints[3]= bacterias.at(3).getSurvivalPoint();
+			   survivalpoints[4]= bacterias.at(4).getSurvivalPoint();
 		}
 	
 	for (std::vector<Bacteria>::iterator it = bacterias.begin(); it != bacterias.end(); it++) {
@@ -56,6 +62,7 @@ void BeginSimulation::fabrication() {
 		}
 		Bacteria fabricatedBacteria=*it; 
 		fabricatedBacteria.duplicatingCODE(copyCode);  // mitotic divisioned bacteria is added to the environment.
+
 		if(it->getbacteriaType().compare(xample1)){
 			int divisions = survivalpoints[0]/90;
 			for(int i=0;i<divisions;i++){
@@ -65,7 +72,22 @@ void BeginSimulation::fabrication() {
 			int divisions = survivalpoints[1]/90;
 			for(int i=0;i<divisions;i++){
              tempBacterias.push_back(fabricatedBacteria);}
-		}		
+		}
+		else if(it->getbacteriaType().compare(xample3)){
+			int divisions = survivalpoints[2]/90;
+			for(int i=0;i<divisions;i++){
+             tempBacterias.push_back(fabricatedBacteria);}
+		}
+		else if(it->getbacteriaType().compare(xample4)){
+			int divisions = survivalpoints[3]/90;
+			for(int i=0;i<divisions;i++){
+             tempBacterias.push_back(fabricatedBacteria);}
+		}
+		else if(it->getbacteriaType().compare(xample5)){
+			int divisions = survivalpoints[4]/90;
+			for(int i=0;i<divisions;i++){
+             tempBacterias.push_back(fabricatedBacteria);}
+		}								
 			
 	}
 	for (std::vector<Bacteria>::iterator it = tempBacterias.begin(); it != tempBacterias.end(); it++) {
