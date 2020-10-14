@@ -31,5 +31,7 @@ It'd be more complicated than written here...
 ![Enc1](https://github.com/trantor00/BasicBacteriaSimulation/blob/master/screenshots/test1.png)
 #### Test2
 ![Enc1](https://github.com/trantor00/BasicBacteriaSimulation/blob/master/screenshots/test2.png)
+#### Test3
+![Enc1](https://github.com/trantor00/BasicBacteriaSimulation/blob/master/screenshots/test3.png)
 
 
