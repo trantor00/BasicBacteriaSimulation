@@ -25,7 +25,7 @@ void Bacteria::calculateSurvivalPoint() {
 
 	}
 	overallSurvivalPoint += survivalPoint;
-	overallSurvivalPoint += growthRATE*10 + lifeTIME;
+	overallSurvivalPoint += growthRATE*10 + lifeTIME*3;
 }
 
 double Bacteria::getSurvivalPoint() {
@@ -60,10 +60,12 @@ injectedBacteria::injectedBacteria(std::string newBacteria) {
 newBacteria* injectedBacteria::returnBacteria() {
 	if (bacteria == "Coccus") return Coccus;
 	else if (bacteria == "Bacillus") return Bacillus;
-
-	return nullptr;
-
+	else if (bacteria == "Spirillum") return Spirillum;
+	else if (bacteria == "Rickettsia") return Rickettsia;
+	else if (bacteria == "Mycoplasma") return Mycoplasma;
+    else return nullptr;
 }
+
 void injectedBacteria::setBacterias() {  // so many research should be done before this section
 	// I know there are bunch of sub bacterias of these 5 bacteria kind but to keep simulation basic I only defined 5 of them as main bacterias. 
 	//Coccus
@@ -104,10 +106,48 @@ void injectedBacteria::setBacterias() {  // so many research should be done befo
 	
 
 	//Spirillum
+	Spirillum = new newBacteria;
+	Spirillum->bacteriaType = "Spirillum";
+	Spirillum->GENETICCODE = (std::string)CODESpirillum;
+	Spirillum->growthRATE = 4;
+	Spirillum->lifeTIME = 2;
+	Spirillum->mutuality = true;
+	std::vector<double> Spirillumphiles;
+	std::vector<double> Spirillumphobes;
+	Spirillumphiles.push_back(1); Spirillumphiles.push_back(1); Spirillumphiles.push_back(2);
+	Spirillumphobes.push_back(1); Spirillumphobes.push_back(3); Spirillumphobes.push_back(1);
+	Spirillum->philes = Spirillumphiles;
+	Spirillum->phobes = Spirillumphobes;
 
 	//Rickettsia
+	Rickettsia = new newBacteria;
+	Rickettsia->bacteriaType = "Rickettsia";
+	Rickettsia->GENETICCODE = (std::string)CODERickettsia;
+	Rickettsia->growthRATE = 25;
+	Rickettsia->lifeTIME = 1;
+	Rickettsia->mutuality = true;
+	std::vector<double> Rickettsiaphiles;
+	std::vector<double> Rickettsiaphobes;
+	Rickettsiaphiles.push_back(3); Rickettsiaphiles.push_back(1); Rickettsiaphiles.push_back(2);
+	Rickettsiaphobes.push_back(1); Rickettsiaphobes.push_back(0); Rickettsiaphobes.push_back(1);
+	Rickettsia->philes = Rickettsiaphiles;
+	Rickettsia->phobes = Rickettsiaphobes;
+
 
 	//Mycoplasma
+	Mycoplasma = new newBacteria;
+	Mycoplasma->bacteriaType = "Mycoplasma";
+	Mycoplasma->GENETICCODE = (std::string)CODEMycoplasma;
+	Mycoplasma->growthRATE = 2;
+	Mycoplasma->lifeTIME = 15;
+	Mycoplasma->mutuality = true;
+	std::vector<double> Mycoplasmaphiles;
+	std::vector<double> Mycoplasmaphobes;
+	Mycoplasmaphiles.push_back(0); Mycoplasmaphiles.push_back(4); Mycoplasmaphiles.push_back(0);
+	Mycoplasmaphobes.push_back(0); Mycoplasmaphobes.push_back(3); Mycoplasmaphobes.push_back(1);
+	Mycoplasma->philes = Mycoplasmaphiles;
+	Mycoplasma->phobes = Mycoplasmaphobes;
+
 	
 }
 

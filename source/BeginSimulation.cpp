@@ -1,6 +1,7 @@
 #include "BeginSimulation.h"
 
 #include <math.h>
+#include <time.h>
 
 
 std::vector<Bacteria> BeginSimulation::getBacterias() {
