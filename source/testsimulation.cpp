@@ -61,8 +61,7 @@ int main() {
 	BeginSimulation simulation1(newEcosystem, naturalSelection, selectiveBreeding, antibiotics, givenAlimentAmount);
 	
 	// Injecting new bacterias to the culture
-	for(int x=0;x<5;x++){
-	//if(x%2==0) 
+	for(int x=0;x<3;x++){
 	simulation1.injectNewBacteria(tempBacteria);
 	simulation1.injectNewBacteria(tempBacteria2);
 	simulation1.injectNewBacteria(tempBacteria3);
@@ -70,9 +69,9 @@ int main() {
 	simulation1.injectNewBacteria(tempBacteria5); 
 	}
     
-	
-
-	for(int a=0;a<5;a++){
+    cout << "Simulation is started! Number of bacterias in the culture: " << simulation1.getBacterias().size() << endl;   	
+ 
+	for(int a=0;a<6;a++){
 	simulation1.fabrication();  // replication
 
 	cout << "Bacterias after " << a+1 << ". breeding:" << endl;
@@ -81,57 +80,57 @@ int main() {
 	cout << "Bacteria " << simulation1.getBacterias().at(i).getbacteriaType() << " - " << i << " 'sGenetic Code : " << simulation1.getBacterias().at(i).getGeneticCode() << endl;
     }	*/
 	
-	int totalBacteria = 0;
-	int totalCoccus = 0;
-	int totalBacillus = 0;
-	int totalSpirillum = 0;
-	int totalRickettsia = 0;
-	int totalMycoplasma = 0;
+	int totalCoccus = 0; int changedCoccus = 0;
+	int totalBacillus = 0; int changedBacillus = 0;
+	int totalSpirillum = 0; int changedSpirillum = 0;
+	int totalRickettsia = 0; int changedRickettsia = 0;
+	int totalMycoplasma = 0; int changedMycoplasma = 0;
 
 	for (int i = 0; i < simulation1.getBacterias().size(); i++) {
-        totalBacteria++;
-		if(simulation1.getBacterias().at(i).getbacteriaType().compare("Coccus") == 0){
+		if(simulation1.getBacterias().at(i).getbacteriaType() == "Coccus"){
+			totalCoccus++;
 			if (simulation1.getBacterias().at(i).getGeneticCode().compare((string)CODECoccus) != 0) {
             //	cout << "Genetical variation detected! at -> Coccus " << totalBacteria << "." << endl;
-			totalCoccus++; }
+			changedCoccus++; }
 			}
-		else if(simulation1.getBacterias().at(i).getbacteriaType().compare("Bacillus") == 0){
+		else if(simulation1.getBacterias().at(i).getbacteriaType() == "Bacillus"){
+			totalBacillus++;
 			if (simulation1.getBacterias().at(i).getGeneticCode().compare((string)CODEBacillus) != 0) {
             //	cout << "Genetical variation detected! at -> Bacillus " << totalBacteria << "." << endl;
-			totalBacillus++; }
+			changedBacillus++; }
 			} 
-		else if(simulation1.getBacterias().at(i).getbacteriaType().compare("Spirillum") == 0){
+		else if(simulation1.getBacterias().at(i).getbacteriaType() == "Spirillum"){
+			totalSpirillum++;
 			if (simulation1.getBacterias().at(i).getGeneticCode().compare((string)CODESpirillum) != 0) {
             //	cout << "Genetical variation detected! at -> Spirillum " << totalBacteria << "." << endl;
-			totalSpirillum++; }
+			changedSpirillum++; }
 			}
-		else if(simulation1.getBacterias().at(i).getbacteriaType().compare("Rickettsia") == 0){
+		else if(simulation1.getBacterias().at(i).getbacteriaType() == "Rickettsia"){
+			totalRickettsia++;
 			if (simulation1.getBacterias().at(i).getGeneticCode().compare((string)CODERickettsia) != 0) {
              //	cout << "Genetical variation detected! at -> Rickettsia " << totalBacteria << "." << endl;
-			totalRickettsia++; }
+			changedRickettsia++; }
 			}
-		else if(simulation1.getBacterias().at(i).getbacteriaType().compare("Mycoplasma") == 0){
+		else if(simulation1.getBacterias().at(i).getbacteriaType() == "Mycoplasma"){
+			totalMycoplasma++;
 			if (simulation1.getBacterias().at(i).getGeneticCode().compare((string)CODEMycoplasma) != 0) {
             //	cout << "Genetical variation detected! at -> Mycoplasma " << totalBacteria << "." << endl;
-			totalMycoplasma++; }
+			changedMycoplasma++; }
 			}
 		else{
 			cout << "Error! at " << simulation1.getBacterias().at(i).getbacteriaType() << endl;		
 			}							
 	}  
 
-	cout << "\nVariation rate is " <<(double)(totalBacillus+totalCoccus) / totalBacteria << " in " << simulation1.getBacterias().size()/2 << " mitotic division." << endl;
-	cout << "Variation rate of Coccus is " << (double)totalCoccus /simulation1.getBacterias().size() << " out of " << totalCoccus << endl;
-	cout << "Variation rate of Bacillus is " << (double)totalBacillus /simulation1.getBacterias().size() << " out of " << totalBacillus << endl;
-	cout << "Variation rate of Spirillum is " << (double)totalSpirillum /simulation1.getBacterias().size() << " out of " << totalSpirillum << endl;
-	cout << "Variation rate of Rickettsia is " << (double)totalRickettsia /simulation1.getBacterias().size() << " out of " << totalRickettsia << endl;
-	cout << "Variation rate of Mycoplasma is " << (double)totalMycoplasma /simulation1.getBacterias().size() << " out of " << totalMycoplasma << endl;
+	cout << "\nVariation rate is " << (double)(changedCoccus + changedBacillus + changedSpirillum + changedRickettsia + changedMycoplasma) / simulation1.getBacterias().size() << " in " << simulation1.getBacterias().size()/2 << " mitotic division." << endl;
+	cout << "Variation rate of Coccus is " << (double)changedCoccus / totalCoccus << " out of " << totalCoccus << endl;
+	cout << "Variation rate of Bacillus is " << (double)changedBacillus / totalBacillus << " out of " << totalBacillus << endl;
+	cout << "Variation rate of Spirillum is " << (double)changedSpirillum / totalSpirillum << " out of " << totalSpirillum << endl;
+	cout << "Variation rate of Rickettsia is " << (double)changedRickettsia / totalRickettsia  << " out of " << totalRickettsia << endl;
+	cout << "Variation rate of Mycoplasma is " << (double)changedMycoplasma / totalMycoplasma << " out of " << totalMycoplasma << endl;
 
-
-	cout << "\nSimulation finished."<< endl;
-
+	cout << "\nSimulation finished. Number of bacterias in the culture : "<< simulation1.getBacterias().size()<< endl;
 	}
-	cout << "Total bacterias in the culture: " << simulation1.getBacterias().size() << endl;
 
 	return 0;
 }

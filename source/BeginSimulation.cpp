@@ -37,13 +37,32 @@ void BeginSimulation::fabrication() {
 	std::string xample3 = bacterias.at(2).getbacteriaType();
 	std::string xample4 = bacterias.at(3).getbacteriaType();
 	std::string xample5 = bacterias.at(4).getbacteriaType();
-		if(xample1.compare(xample2)!=0){
+
                survivalpoints[0]= bacterias.at(0).getSurvivalPoint();
 			   survivalpoints[1]= bacterias.at(1).getSurvivalPoint();
 			   survivalpoints[2]= bacterias.at(2).getSurvivalPoint();
 			   survivalpoints[3]= bacterias.at(3).getSurvivalPoint();
 			   survivalpoints[4]= bacterias.at(4).getSurvivalPoint();
+		
+               	std::string code1 = bacterias.at(0).getGeneticCode();
+	            std::string code2 = bacterias.at(1).getGeneticCode();
+              	std::string code3 = bacterias.at(2).getGeneticCode();
+             	std::string code4 = bacterias.at(3).getGeneticCode();
+	            std::string code5 = bacterias.at(4).getGeneticCode();
+
+		int tempV = 0xFFF0; 
+		int chosen;
+		for(int j = 0; j < 5; j++){
+            if(survivalpoints[j] < tempV){
+				tempV = survivalpoints[j];
+			}
 		}
+		for(int y = 0; y < 5; y++){
+			if(survivalpoints[y] == tempV){
+           //    chosen = y ;  // if a bacteria has lower survival points than others then it will be dying slowly.
+			}
+		}	
+	
 	
 	for (std::vector<Bacteria>::iterator it = bacterias.begin(); it != bacterias.end(); it++) {
 	//	int fabricationAbility = it->getSurvivalPoint();
@@ -63,30 +82,70 @@ void BeginSimulation::fabrication() {
 		Bacteria fabricatedBacteria=*it; 
 		fabricatedBacteria.duplicatingCODE(copyCode);  // mitotic divisioned bacteria is added to the environment.
 
-		if(it->getbacteriaType().compare(xample1)){
-			int divisions = survivalpoints[0]/90;
-			for(int i=0;i<divisions;i++){
-             tempBacterias.push_back(fabricatedBacteria);}
+		if(it->getbacteriaType().compare(xample1) == 0){
+			    if(it->getGeneticCode() != code1){
+			    int divisions = survivalpoints[0]/90;
+			    for(int i=0;i<divisions;i++){
+                tempBacterias.push_back(fabricatedBacteria);}
+			}
+			else{
+				tempBacterias.push_back(fabricatedBacteria);
+			}
+			if(chosen == 0){
+				tempBacterias.pop_back();
+			}
 		}
-		else if(it->getbacteriaType().compare(xample2)){
-			int divisions = survivalpoints[1]/90;
-			for(int i=0;i<divisions;i++){
-             tempBacterias.push_back(fabricatedBacteria);}
+		else if(it->getbacteriaType().compare(xample2) == 0){
+			    if(it->getGeneticCode() != code2){
+			    int divisions = survivalpoints[1]/90;
+			    for(int i=0;i<divisions;i++){
+                tempBacterias.push_back(fabricatedBacteria);}
+			}
+			else{
+				tempBacterias.push_back(fabricatedBacteria);
+			}
+			if(chosen == 1){
+				tempBacterias.pop_back();
+			}			
 		}
-		else if(it->getbacteriaType().compare(xample3)){
-			int divisions = survivalpoints[2]/90;
-			for(int i=0;i<divisions;i++){
-             tempBacterias.push_back(fabricatedBacteria);}
+		else if(it->getbacteriaType().compare(xample3) == 0){
+			    if(it->getGeneticCode() != code3){
+			    int divisions = survivalpoints[2]/90;
+			    for(int i=0;i<divisions;i++){
+                tempBacterias.push_back(fabricatedBacteria);}
+			}
+			else{
+				tempBacterias.push_back(fabricatedBacteria);
+			}
+			if(chosen == 2){
+				tempBacterias.pop_back();
+			}			
 		}
-		else if(it->getbacteriaType().compare(xample4)){
-			int divisions = survivalpoints[3]/90;
-			for(int i=0;i<divisions;i++){
-             tempBacterias.push_back(fabricatedBacteria);}
+		else if(it->getbacteriaType().compare(xample4) == 0){
+			    if(it->getGeneticCode() != code4){
+			    int divisions = survivalpoints[3]/90;
+			    for(int i=0;i<divisions;i++){
+                tempBacterias.push_back(fabricatedBacteria);}
+			}
+			else{
+				tempBacterias.push_back(fabricatedBacteria);
+			}
+			if(chosen == 3){
+				tempBacterias.pop_back();
+			}			
 		}
-		else if(it->getbacteriaType().compare(xample5)){
-			int divisions = survivalpoints[4]/90;
-			for(int i=0;i<divisions;i++){
-             tempBacterias.push_back(fabricatedBacteria);}
+		else if(it->getbacteriaType().compare(xample5) == 0){
+			    if(it->getGeneticCode() != code5){
+			    int divisions = survivalpoints[4]/90;
+			    for(int i=0;i<divisions;i++){
+                tempBacterias.push_back(fabricatedBacteria);}
+			}
+			else{
+				tempBacterias.push_back(fabricatedBacteria);
+			}
+			if(chosen == 4){
+				tempBacterias.pop_back();
+			}			
 		}								
 			
 	}
