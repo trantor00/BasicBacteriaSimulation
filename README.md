@@ -3,17 +3,17 @@
 Still in the process and there are soooo many things to do...
 
 Current components:
- Ecosystem
- Bacteria
- BeginSimulation
- testsimulation
+ Ecosystem,
+ Bacteria,
+ BeginSimulation,
+ testsimulation,
 
 Current Bacterias(It's very basic for now):
- Coccus 
- Bacillus 
- Spirillum
- Rickettsia
- Mycoplasma
+ Coccus,
+ Bacillus, 
+ Spirillum,
+ Rickettsia,
+ Mycoplasma,
 
 main class << environment, degree(celcius), area magnitude(this determines maximum amount of bacteria in the enviroment)
 
