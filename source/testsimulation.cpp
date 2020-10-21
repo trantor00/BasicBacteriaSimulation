@@ -68,11 +68,16 @@ int main() {
 	simulation1.injectNewBacteria(tempBacteria4);
 	simulation1.injectNewBacteria(tempBacteria5); 
 	}
+	cout << "Included bacterias : \n" << tempBacteria.getbacteriaType() << " and its survival point: "  <<tempBacteria.getSurvivalPoint() << endl;
+	cout << tempBacteria2.getbacteriaType() << " and its survival point: "  <<tempBacteria2.getSurvivalPoint() << endl;
+	cout << tempBacteria3.getbacteriaType() << " and its survival point: "  <<tempBacteria3.getSurvivalPoint() << endl;
+	cout << tempBacteria4.getbacteriaType() << " and its survival point: "  <<tempBacteria4.getSurvivalPoint() << endl;
+	cout << tempBacteria5.getbacteriaType() << " and its survival point: "  <<tempBacteria5.getSurvivalPoint() << endl;
     
     cout << "Simulation is started! Number of bacterias in the culture: " << simulation1.getBacterias().size() << endl;   	
  
 	for(int a=0;a<6;a++){
-	simulation1.fabrication();  // replication
+	simulation1.replication();  // replication
 
 	cout << "Bacterias after " << a+1 << ". breeding:" << endl;
 	
@@ -123,11 +128,11 @@ int main() {
 	}  
 
 	cout << "\nVariation rate is " << (double)(changedCoccus + changedBacillus + changedSpirillum + changedRickettsia + changedMycoplasma) / simulation1.getBacterias().size() << " in " << simulation1.getBacterias().size()/2 << " mitotic division." << endl;
-	cout << "Variation rate of Coccus is " << (double)changedCoccus / totalCoccus << " out of " << totalCoccus << endl;
-	cout << "Variation rate of Bacillus is " << (double)changedBacillus / totalBacillus << " out of " << totalBacillus << endl;
-	cout << "Variation rate of Spirillum is " << (double)changedSpirillum / totalSpirillum << " out of " << totalSpirillum << endl;
-	cout << "Variation rate of Rickettsia is " << (double)changedRickettsia / totalRickettsia  << " out of " << totalRickettsia << endl;
-	cout << "Variation rate of Mycoplasma is " << (double)changedMycoplasma / totalMycoplasma << " out of " << totalMycoplasma << endl;
+	cout << "Variation rate of Coccus is %" << ((double)changedCoccus / totalCoccus)*100 << " out of " << totalCoccus << endl;
+	cout << "Variation rate of Bacillus is %" << ((double)changedBacillus / totalBacillus)*100 << " out of " << totalBacillus << endl;
+	cout << "Variation rate of Spirillum is %" << ((double)changedSpirillum / totalSpirillum)*100 << " out of " << totalSpirillum << endl;
+	cout << "Variation rate of Rickettsia is %" << ((double)changedRickettsia / totalRickettsia)*100  << " out of " << totalRickettsia << endl;
+	cout << "Variation rate of Mycoplasma is %" << ((double)changedMycoplasma / totalMycoplasma)*100 << " out of " << totalMycoplasma << endl;
 
 	cout << "\nSimulation finished. Number of bacterias in the culture : "<< simulation1.getBacterias().size()<< endl;
 	}

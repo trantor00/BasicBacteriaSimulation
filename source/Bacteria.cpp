@@ -166,6 +166,9 @@ const Bacteria& Bacteria::operator=(const Bacteria& newBacteria) {
 
 
 std::string Bacteria::getTrueCodon(std::string incomingCodon, int error) {
+	while(error > 9){
+		error -= 6;
+	}
 	std::string trueCodon;
 	if (incomingCodon == START) return START;
 	if (incomingCodon == STOP) return STOP;

@@ -19,7 +19,7 @@ public:
 public:
 	void injectNewBacteria(Bacteria newBacteria);
 	void setParameters();	
-	void fabrication();
+	void replication();
 	void startSimulation();
 	std::vector<Bacteria> getBacterias();
 
