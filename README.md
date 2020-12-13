@@ -22,7 +22,7 @@ sub classes << bacterias, other variables, selection types(natural selection dep
 test class and GUI << in the test class all the variables and parameters will be entered and processed by classes.
 
 
-It'd be more complicated than written here...
+It'll be more complicated than written here and I'll continue developing this project.
 
 ### Screenshots:
 
